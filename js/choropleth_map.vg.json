@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Floods in Malaysia (2000 - 2024) - Total per State",
+  "width": 800,
+  "height": 400,
+  "projection": {
+    "type": "mercator",
+    "center": [108.5, 3],
+    "scale": 2200
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/picolloo/Homework-Week-9/main/js/ne_10m_admin_1_states_provinces.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/picolloo/Homework-Week-9/main/data/flood_dataset.csv"
+            },
+            "key": "STATE",
+            "fields": ["FLOOD"]
+          }
+        },
+        {
+          "calculate": "toNumber(datum.FLOOD)",
+          "as": "FLOOD_NUM"
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "black"},
+      "encoding": {
+        "color": {
+          "field": "FLOOD_NUM",
+          "type": "quantitative",
+          "scale": {"scheme": "blues"},
+          "legend": {
+          "title": "Total Floods"}
+        },
+        "tooltip": [
+          {"field": "properties.name", "title": "State:"},
+          {"field": "FLOOD_NUM", "title": "Total Floods:"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "graticule": {"step": [5, 5]}
+      },
+      "mark": {"type": "geoshape", "stroke": "lightgray", "fill": "none"}
+    }
+  ]
+}
