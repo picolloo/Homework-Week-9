@@ -54,8 +54,8 @@
           "legend": {"title": "Relative Flood Frequency"}
         },
         "tooltip": [
-          {"field": "properties.name", "title": "State:"},
-          {"field": "FLOOD_NUM", "title": "Total Floods:"},
+          {"field": "properties.name", "title": "State"},
+          {"field": "FLOOD_NUM", "title": "Total Floods"},
           {"field": "FLOOD_NORM", "title": "Relative Flood Frequency"}
         ]
       }
