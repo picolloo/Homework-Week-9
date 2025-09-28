@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Floods in Malaysia (2000 - 2024) - Total per State",
+  "title": "Floods in Malaysia (2000 - 2024)",
   "width": 800,
   "height": 400,
   "projection": {
