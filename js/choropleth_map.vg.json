@@ -34,22 +34,32 @@
         {
           "calculate": "toNumber(datum.FLOOD)",
           "as": "FLOOD_NUM"
+        },
+        {
+          "joinaggregate": [
+            {"op": "max", "field": "FLOOD_NUM", "as": "MAX_FLOOD"}
+          ]
+        },
+        {
+          "calculate": "datum.FLOOD_NUM / datum.MAX_FLOOD",
+          "as": "FLOOD_NORM"
         }
       ],
       "mark": {"type": "geoshape", "stroke": "black"},
       "encoding": {
         "color": {
-          "field": "FLOOD_NUM",
+          "field": "FLOOD_NORM",
           "type": "quantitative",
           "scale": {"scheme": "blues"},
-          "legend": {
-          "title": "Total Floods"}
+          "legend": {"title": "Relative Flood Frequency"}
         },
         "tooltip": [
           {"field": "properties.name", "title": "State:"},
-          {"field": "FLOOD_NUM", "title": "Total Floods:"}
+          {"field": "FLOOD_NUM", "title": "Total Floods:"},
+          {"field": "FLOOD_NORM", "title": "Relative Flood Frequency"}
         ]
       }
     }
   ]
 }
+
