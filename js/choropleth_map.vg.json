@@ -11,6 +11,12 @@
   "layer": [
     {
       "data": {
+        "graticule": {"step": [3, 3]}
+      },
+      "mark": {"type": "geoshape", "stroke": "lightgray", "fill": "none"}
+    },
+    {
+      "data": {
         "url": "https://raw.githubusercontent.com/picolloo/Homework-Week-9/main/js/ne_10m_admin_1_states_provinces.json",
         "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
       },
@@ -44,12 +50,6 @@
           {"field": "FLOOD_NUM", "title": "Total Floods:"}
         ]
       }
-    },
-    {
-      "data": {
-        "graticule": {"step": [5, 5]}
-      },
-      "mark": {"type": "geoshape", "stroke": "lightgray", "fill": "none"}
     }
   ]
 }
